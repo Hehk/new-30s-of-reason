@@ -1,18 +1,14 @@
-# Basic Reason Template
+The original was over engineered
 
-Hello! This project allows you to quickly get started with Reason and BuckleScript. If you wanted a more sophisticated version, try the `react` template (`bsb -theme react -init .`).
+This will just be a simple server rendered next.js app writen in ReasonML
 
-# Build
-```
-npm run build
-```
+## Todo
+- [ ] Recreate the snippets code but have it output a json file with all the snippets
+- [ ] Create the basic layout website 
+- [ ] Use the snippets json file to generate page for server-rendering
+- [ ] profit
 
-# Build + Watch
+## Eventual goals
+- [ ] mix testing in with the snippet json
+- [ ] implement code splitting
 
-```
-npm run start
-```
-
-
-# Editor
-If you use `vscode`, Press `Windows + Shift + B` it will build automatically
