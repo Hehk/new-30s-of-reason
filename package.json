@@ -18,8 +18,10 @@
     "husky": "^0.15.0-rc.12"
   },
   "dependencies": {
+    "@zeit/next-css": "^0.1.4",
     "next": "^5.0.0",
-    "reason-react": "^0.3.4"
+    "reason-react": "^0.3.4",
+    "tachyons": "^4.9.1"
   },
   "husky": {
     "hooks": {
