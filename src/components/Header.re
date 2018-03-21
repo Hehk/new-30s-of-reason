@@ -1,18 +1,35 @@
 open Utils.React;
 
+type link = {
+  text: string,
+  href: string
+};
+
 let component = ReasonReact.statelessComponent("Header");
 
-let make = _children => {
+module Styles = {
+  let wrapper = ["w-100", "pa3", "ph5-ns", "b--black-10", "bb"];
+  let pageFrame = ["w-100", "mw8", "center", "f4", "sans-serif"];
+  let link = ["link", "dim", "dark-gray"];
+  let smallLink = ["ml4", "dark-gray", ...link];
+  let linkList = ["fr"];
+};
+
+let make = (~links, _children) => {
   ...component,
-    render: _self => <nav className="dt w-100 border-box pa3 ph5-ns">
-  <a className="dtc v-mid mid-gray link dim w-25" href="#" title="Home">
-    <img src="http://tachyons.io/img/logo.jpg" className="dib w2 h2 br-100" alt="Site Name" />
-  </a>
-  <div className="dtc v-mid w-75 tr">
-    <a className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" href="#about"
-    title="About">(eleOfStr("About"))</a>
-    <a className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" href="#github"
-    title="Github">(eleOfStr("Github"))</a>
-  </div>
-</nav>
+  render: _self =>
+    <header className=(makeCls(Styles.wrapper))>
+      <nav className=(makeCls(Styles.pageFrame))>
+        <a className=(makeCls(Styles.link)) href="#" title="Home"> (eleOfStr("30s of Reason")) </a>
+        <div className=(makeCls(Styles.linkList))>
+          (
+            eleOfList(
+              Belt.List.map(links, ({href, text}) =>
+                <a className=(makeCls(Styles.smallLink)) href title="About"> (eleOfStr(text)) </a>
+              )
+            )
+          )
+        </div>
+      </nav>
+    </header>
 };

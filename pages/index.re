@@ -1,5 +1,3 @@
-open Utils.React;
-
 [%bs.raw {|require('tachyons/css/tachyons.css')|}];
 
 let component = ReasonReact.statelessComponent("Page.Index");
