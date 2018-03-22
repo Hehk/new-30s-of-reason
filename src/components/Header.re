@@ -8,7 +8,7 @@ type link = {
 let component = ReasonReact.statelessComponent("Header");
 
 module Styles = {
-  let wrapper = ["w-100", "pa3", "ph5-ns", "b--black-10", "bb"];
+  let wrapper = ["w-100", "pa3", "ph5-ns", "b--light-gray", "bb"];
   let pageFrame = ["w-100", "mw8", "center", "f4", "sans-serif"];
   let link = ["link", "dim", "dark-gray"];
   let smallLink = ["ml4", "dark-gray", ...link];
@@ -25,7 +25,7 @@ let make = (~links, _children) => {
           (
             eleOfList(
               Belt.List.map(links, ({href, text}) =>
-                <a className=(makeCls(Styles.smallLink)) href title="About"> (eleOfStr(text)) </a>
+                <a className=(makeCls(Styles.smallLink)) key=href href title="About"> (eleOfStr(text)) </a>
               )
             )
           )
