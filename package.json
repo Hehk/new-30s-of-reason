@@ -6,7 +6,8 @@
     "watch": "bsb -make-world -w",
     "dev": "next",
     "start": "next start",
-    "clean": "bsb -clean-world"
+    "clean": "bsb -clean-world",
+    "process-snippets": "processmd snippets/**/*.md --outputDir snippets --summaryOutput snippets/summary.json"
   },
   "keywords": [
     "BuckleScript"
@@ -15,9 +16,11 @@
   "license": "MIT",
   "devDependencies": {
     "bs-platform": "^2.2.2",
-    "husky": "^0.15.0-rc.12"
+    "husky": "^0.15.0-rc.12",
+    "processmd": "^4.2.0"
   },
   "dependencies": {
+    "@glennsl/bs-json": "^1.2.0",
     "@zeit/next-css": "^0.1.4",
     "next": "^5.0.0",
     "reason-react": "^0.3.4",

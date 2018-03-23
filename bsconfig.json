@@ -15,7 +15,8 @@
   },
   "suffix": ".js",
   "bs-dependencies": [
-    "reason-react"
+    "reason-react",
+    "@glennsl/bs-json"
   ],
    "reason": {"react-jsx" : 2},
   "warnings": {
