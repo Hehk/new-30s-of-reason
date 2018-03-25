@@ -1,19 +1,6 @@
 open Utils.React;
 
-type code = {
-  re: string,
-  js: string,
-  test: string
-};
-
-type t = {
-  code,
-  title: string,
-  tags: list(string),
-  description: string,
-  notes: list(string),
-  id: string
-};
+open Types;
 
 let component = ReasonReact.statelessComponent("Snippet");
 

@@ -1,11 +1,19 @@
-open Snippet;
+open Types;
 
 open Utils.React;
 
 let component = ReasonReact.statelessComponent("SnippetList");
 
-let make = (~snippets, _children) => {
+let make = (_children) => {
   ...component,
   render: _self =>
-    <ol> (eleOfList(Belt.List.mapU(snippets, [@bs] snippet => <Snippet snippet key=snippet.id />))) </ol>
+    <ol>
+      (
+        eleOfArr(
+          Belt.Array.mapU(Utils.Snippets.getSnippets(),
+            [@bs] (snippet => <Snippet snippet key=snippet.id />)
+          )
+        )
+      )
+    </ol>
 };

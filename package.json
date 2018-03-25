@@ -7,7 +7,7 @@
     "dev": "next",
     "start": "next start",
     "clean": "bsb -clean-world",
-    "process-snippets": "processmd snippets/**/*.md --outputDir snippets --summaryOutput snippets/summary.json"
+    "create-json": "processmd snippets/**/*.md --outputDir snippets --summaryOutput snippets/summary.json"
   },
   "keywords": [
     "BuckleScript"

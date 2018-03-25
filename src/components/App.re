@@ -1,38 +1,12 @@
 open Header;
 
-open Snippet;
-
 open Utils.React;
 
 let component = ReasonReact.statelessComponent("App");
 
-let links = [{href: "about", text: "About"}, {href: "https://github.com/30s-of-reason", text: "Github"}];
-
-let snippets = [
-  {
-    code: {
-      re: "Belt.List.map",
-      js: "",
-      test: ""
-    },
-    id: "0",
-    title: "map",
-    tags: [],
-    description: "does cool shit",
-    notes: []
-  },
-  {
-    code: {
-      re: "Belt.List.reduce",
-      js: "",
-      test: ""
-    },
-    id: "1",
-    title: "reduce",
-    tags: [],
-    description: "i hope this works",
-    notes: []
-  }
+let links = [
+  {href: "about", text: "About"},
+  {href: "https://github.com/30s-of-reason", text: "Github"}
 ];
 
 module Style = {
@@ -47,7 +21,7 @@ let make = _children => {
       <SideBar />
       <div className=(makeCls(Style.main))>
         <Header links />
-        <SnippetList snippets />
+        <SnippetList />
       </div>
     </div>
 };
