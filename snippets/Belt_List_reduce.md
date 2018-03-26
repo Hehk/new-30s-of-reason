@@ -1,5 +1,6 @@
 ---
 tags: belt, list, reduce, function, curry
+modules: Belt, List
 ---
 
 # Belt.List.reduce

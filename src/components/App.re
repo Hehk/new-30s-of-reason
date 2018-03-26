@@ -17,9 +17,9 @@ module Style = {
 let make = _children => {
   ...component,
   render: _self =>
-    <div className=(makeCls(Style.wrapper))>
+    <div className=(c(Style.wrapper))>
       <SideBar />
-      <div className=(makeCls(Style.main))>
+      <div className=(c(Style.main))>
         <Header links />
         <SnippetList />
       </div>

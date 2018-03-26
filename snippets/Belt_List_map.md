@@ -1,5 +1,6 @@
 ---
 tags: belt, list, map, function, curry
+modules: Belt, List
 ---
 
 # Belt.List.map

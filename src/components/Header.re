@@ -18,14 +18,14 @@ module Styles = {
 let make = (~links, _children) => {
   ...component,
   render: _self =>
-    <header className=(makeCls(Styles.wrapper))>
-      <nav className=(makeCls(Styles.pageFrame))>
-        <a className=(makeCls(Styles.link)) href="#" title="Home"> (eleOfStr("30s of Reason")) </a>
-        <div className=(makeCls(Styles.linkList))>
+    <header className=(c(Styles.wrapper))>
+      <nav className=(c(Styles.pageFrame))>
+        <a className=(c(Styles.link)) href="#" title="Home"> (eleOfStr("30s of Reason")) </a>
+        <div className=(c(Styles.linkList))>
           (
             eleOfList(
               Belt.List.map(links, ({href, text}) =>
-                <a className=(makeCls(Styles.smallLink)) key=href href title="About"> (eleOfStr(text)) </a>
+                <a className=(c(Styles.smallLink)) key=href href title="About"> (eleOfStr(text)) </a>
               )
             )
           )
