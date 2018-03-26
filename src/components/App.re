@@ -10,7 +10,7 @@ let links = [
 ];
 
 module Style = {
-  let wrapper = ["flex", "items-start"];
+  let wrapper = ["flex", "items-start", "sans-serif"];
   let main = ["w-100"];
 };
 
