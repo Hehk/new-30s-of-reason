@@ -10,15 +10,28 @@ module Styles = {
 
 /* This will eventually form a tree of modules that can be used for searching */
 let moduleTree = get();
+
 Js.log(moduleTree);
 
 let make = _children => {
   ...component,
   render: _self =>
     <ol className=(c(Styles.wrapper))>
-      (Belt.Array.map(moduleTree, snippet => <li key=snippet.id> (eleOfStr(switch (Belt.List.head(snippet.modules)) {
-        | None => "";
-        | Some(x) => x; 
-        })) </li>) |> eleOfArr)
-    </ol>
+      (
+        moduleTree
+        |> Belt.Array.map(_, snippet =>
+             <li key=snippet.id>
+               (
+                 eleOfStr(
+                   switch (Belt.List.head(snippet.modules)) {
+                   | None => ""
+                   | Some(x) => x
+                   },
+                 )
+               )
+             </li>
+           )
+        |> eleOfArr
+      )
+    </ol>,
 };

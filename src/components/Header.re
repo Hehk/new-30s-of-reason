@@ -2,7 +2,7 @@ open Utils.React;
 
 type link = {
   text: string,
-  href: string
+  href: string,
 };
 
 let component = ReasonReact.statelessComponent("Header");
@@ -23,13 +23,13 @@ let make = (~links, _children) => {
         <a className=(c(Styles.link)) href="#" title="Home"> (eleOfStr("30s of Reason")) </a>
         <div className=(c(Styles.linkList))>
           (
-            eleOfList(
-              Belt.List.map(links, ({href, text}) =>
-                <a className=(c(Styles.smallLink)) key=href href title="About"> (eleOfStr(text)) </a>
-              )
-            )
+            links
+            |> Belt.List.map(_, ({href, text}) =>
+                 <a className=(c(Styles.smallLink)) key=href href title="About"> (eleOfStr(text)) </a>
+               )
+            |> eleOfList
           )
         </div>
       </nav>
-    </header>
+    </header>,
 };
