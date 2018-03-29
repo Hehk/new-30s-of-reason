@@ -9,22 +9,27 @@ module Snippet = {
     let title = ["normal", "mt0", "f4"];
     let snippet = ["pv3", "mv2"];
   };
+  let prefix = "Snippet";
+  module Title = (val comp(~cls=Styles.title, ~tag="h2", prefix ++ ".Title"));
+  module Tag = (val comp(~cls=Styles.tag, ~tag="li", prefix ++ ".Tag"));
+  module TagList = (val comp(~cls=Styles.tagList, ~tag="ul", prefix ++ ".TagList"));
+  module Wrapper = (val comp(~cls=Styles.snippet, ~tag="li", prefix ++ ".Wrapper"));
   let component = ReasonReact.statelessComponent("Snippet");
   let make = (~snippet, _children) => {
     ...component,
     render: _self =>
-      <li className=(c(Styles.snippet))>
-        <h2 className=(c(Styles.title))> (eleOfStr(snippet.title)) </h2>
+      <Wrapper>
+        <Title> (eleOfStr(snippet.title)) </Title>
         <p> (eleOfStr(snippet.description)) </p>
         <code> (eleOfStr(snippet.code.re)) </code>
-        <ul className=(c(Styles.tagList))>
+        <TagList>
           (
             snippet.tags
-            |> Belt.List.map(_, tag => <li className=(c(Styles.tag)) key=tag> (eleOfStr(tag)) </li>)
+            |> Belt.List.map(_, tag => <Tag key=tag> (eleOfStr(tag)) </Tag>)
             |> eleOfList
           )
-        </ul>
-      </li>,
+        </TagList>
+      </Wrapper>,
   };
 };
 
@@ -35,12 +40,18 @@ module Styles = {
   let list = ["list", "pa0", "mw8", "center", "mv0"];
 };
 
+let prefix = "SnippetList";
+
+module Wrapper = (val comp(~cls=Styles.wrapper, ~tag="main", prefix ++ ".Wrapper"));
+
+module List = (val comp(~cls=Styles.list, ~tag="ol", prefix ++ ".List"));
+
 let make = _children => {
   ...component,
   render: _self =>
-    <main className=(c(Styles.wrapper))>
-      <ol className=(c(Styles.list))>
+    <Wrapper>
+      <List>
         (get() |> Belt.Array.map(_, snippet => <Snippet snippet key=snippet.id />) |> eleOfArr)
-      </ol>
-    </main>,
+      </List>
+    </Wrapper>,
 };
