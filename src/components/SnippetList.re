@@ -23,11 +23,7 @@ module Snippet = {
         <p> (eleOfStr(snippet.description)) </p>
         <code> (eleOfStr(snippet.code.re)) </code>
         <TagList>
-          (
-            snippet.tags
-            |> Belt.List.map(_, tag => <Tag key=tag> (eleOfStr(tag)) </Tag>)
-            |> eleOfList
-          )
+          (snippet.tags |> Belt.List.map(_, tag => <Tag key=tag> (eleOfStr(tag)) </Tag>) |> eleOfList)
         </TagList>
       </Wrapper>,
   };
@@ -50,8 +46,6 @@ let make = _children => {
   ...component,
   render: _self =>
     <Wrapper>
-      <List>
-        (get() |> Belt.Array.map(_, snippet => <Snippet snippet key=snippet.id />) |> eleOfArr)
-      </List>
+      <List> (get() |> Belt.Array.map(_, snippet => <Snippet snippet key=snippet.id />) |> eleOfArr) </List>
     </Wrapper>,
 };

@@ -5,18 +5,28 @@ open Snippets;
 let component = ReasonReact.statelessComponent("Sidebar");
 
 module Styles = {
-  let wrapper = ["bg-light-gray", "fl", "w5", "vh-100", "list", "pa0", "ma0"];
+  let wrapper = [
+    "bg-light-gray",
+    "fl",
+    "w5",
+    "vh-100",
+    "list",
+    "pa0",
+    "ma0",
+  ];
 };
 
 /* This will eventually form a tree of modules that can be used for searching */
 let moduleTree = get();
 
-Js.log(moduleTree);
+module Wrapper = (
+  val comp(~cls=Styles.wrapper, ~tag="ol", "SideBar.Wrapper")
+);
 
 let make = _children => {
   ...component,
   render: _self =>
-    <ol className=(c(Styles.wrapper))>
+    <Wrapper>
       (
         moduleTree
         |> Belt.Array.map(_, snippet =>
@@ -33,5 +43,5 @@ let make = _children => {
            )
         |> eleOfArr
       )
-    </ol>,
+    </Wrapper>,
 };

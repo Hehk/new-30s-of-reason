@@ -15,13 +15,21 @@ module Styles = {
   let linkList = ["fr"];
 };
 
+let prefix = "Header";
+
+module Wrapper = (val comp(~cls=Styles.wrapper, ~tag="header", prefix ++ ".Wrapper"));
+
+module PageFrame = (val comp(~cls=Styles.pageFrame, ~tag="header", prefix ++ ".PageFrame"));
+
+module LinkList = (val comp(~cls=Styles.linkList, ~tag="div", prefix ++ ".LinkList"));
+
 let make = (~links, _children) => {
   ...component,
   render: _self =>
-    <header className=(c(Styles.wrapper))>
-      <nav className=(c(Styles.pageFrame))>
+    <Wrapper>
+      <PageFrame>
         <a className=(c(Styles.link)) href="#" title="Home"> (eleOfStr("30s of Reason")) </a>
-        <div className=(c(Styles.linkList))>
+        <LinkList>
           (
             links
             |> Belt.List.map(_, ({href, text}) =>
@@ -29,7 +37,7 @@ let make = (~links, _children) => {
                )
             |> eleOfList
           )
-        </div>
-      </nav>
-    </header>,
+        </LinkList>
+      </PageFrame>
+    </Wrapper>,
 };
